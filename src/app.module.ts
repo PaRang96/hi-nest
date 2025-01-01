@@ -3,7 +3,7 @@ import { MoviesModule } from './movies/movies.module';
 import { AppController } from './app.controller';
 
 @Module({
-    imports: [MoviesModule],
-    controllers: [AppController],
+  imports: [MoviesModule],
+  controllers: [AppController],
 })
 export class AppModule {}

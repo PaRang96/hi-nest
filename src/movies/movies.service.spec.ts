@@ -25,7 +25,7 @@ describe('MoviesService', () => {
   });
 
   describe('getOne', () => {
-    it ('should return a movie', () => {
+    it('should return a movie', () => {
       service.create({
         title: 'Test Movie',
         year: 2024,
@@ -35,11 +35,10 @@ describe('MoviesService', () => {
       expect(movie).toBeDefined();
       expect(movie.id).toEqual(1);
     });
-    it ('should throw 404 error', () => {
+    it('should throw 404 error', () => {
       try {
         service.getOne(999);
-      }
-      catch (e) {
+      } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
         expect(e.message).toEqual('Movie with ID 999 not found.');
       }
@@ -47,7 +46,7 @@ describe('MoviesService', () => {
   });
 
   describe('deleteOne', () => {
-    it ('deletes a movie', () => {
+    it('deletes a movie', () => {
       service.create({
         title: 'Test Movie',
         year: 2024,
@@ -58,18 +57,17 @@ describe('MoviesService', () => {
       const afterDelete = service.getAll().length;
       expect(afterDelete).toEqual(beforeDelete - 1);
     });
-    it ('should return a 404', () => {
+    it('should return a 404', () => {
       try {
         service.deleteOne(999);
-      }
-      catch (e) {
+      } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
       }
     });
   });
 
   describe('create', () => {
-    it ('should create a movie', () => {
+    it('should create a movie', () => {
       const allMovies = service.getAll().length;
       service.create({
         title: 'Test Movie',
@@ -82,7 +80,7 @@ describe('MoviesService', () => {
   });
 
   describe('update', () => {
-    it ('should update a movie', () => {
+    it('should update a movie', () => {
       service.create({
         title: 'Test Movie',
         year: 2024,
@@ -92,11 +90,10 @@ describe('MoviesService', () => {
       const movie = service.getOne(1);
       expect(movie.title).toEqual('Updated Test');
     });
-    it ('should return a 404 error', ()=>{
+    it('should return a 404 error', () => {
       try {
         service.update(999, {});
-      }
-      catch (e) {
+      } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
       }
     });
